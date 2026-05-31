@@ -36,6 +36,32 @@ while True:
             if max_attempts and attempts >= max_attempts:
                 print(f"Попытки закончились. Загаданное число = {sec_num}.")
                 break
+    elif choice == "2":
+        print("\n=== Парный режим ===")
+        print("Игрок 1 загадывает число, Игрок 2 угадывает")
+        secret_number = int(input("Игрок 1, введите число от 1 до 100: "))
+        attempts = 0
+        max_attempts = None
 
+        limit_choice = input("Установить лимит попыток? (да/нет): ").lower()
+        if limit_choice == "да":
+            max_attempts = int(input("Введите максимальное количество попыток: "))
 
+        print("Игрок 2, начинайте угадывать!")
 
+        while True:
+            guess = int(input("Ваша догадка: "))
+            attempts += 1
+
+            if guess < secret_number:
+                print("Загаданное число БОЛЬШЕ!")
+            elif guess > secret_number:
+                print("Загаданное число МЕНЬШЕ!")
+            else:
+                print(f"Игрок 2 угадал число за {attempts} попыток!")
+                break
+            if max_attempts and attempts >= max_attempts:
+                print(f"Попытки закончились! Загаданное число было {secret_number}.")
+                break
+    elif choice == "3":
+        print("Спасибо за игру! Пока")
